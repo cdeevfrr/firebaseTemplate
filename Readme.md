@@ -12,7 +12,7 @@ Make sure you have terraform installed, you can check with
 
 - `terraform version`
 
-Update the `infrastructure/variables.tf` file for your project ID.
+Update the `infrastructure/terraform.tfvars` file for your project ID.
 
 To deploy the first time:
 - `terraform init`
