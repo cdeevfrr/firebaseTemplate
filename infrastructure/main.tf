@@ -20,6 +20,11 @@ provider "google" {
   region  = var.region
 }
 
+provider "google-beta" {
+  project = var.project_id
+  region  = var.region
+}
+
 # ---
 # 2. FIREBASE / FIRESTORE RESOURCES
 # ---
@@ -33,10 +38,11 @@ resource "google_project_service" "firebase_api" {
 
 # Creates a Firebase Web App instance
 resource "google_firebase_web_app" "web_app" {
+  provider     = google-beta 
   # This creates a web app to host the React code and get client config
   project      = var.project_id
   display_name = "My Graph App Web App"
-  depends_on = [google_project_service.firebase_api]
+  depends_on   = [google_project_service.firebase_api]
 }
 
 # Creates the Firestore Database (Native Mode)
@@ -48,13 +54,12 @@ resource "google_firestore_database" "database" {
 }
 
 # Deploy the Firestore Security Rules
-# NOTE: The actual content of firestore.rules is defined in the functions folder
 resource "google_firebaserules_ruleset" "firestore" {
   project = var.project_id
   source {
     files {
       name    = "firestore.rules"
-      content = file("${path.root}/../functions/firestore.rules") # Read file content
+      content = file("${path.root}/firestore_rules.txt") # Read file content
     }
   }
   lifecycle {
@@ -122,12 +127,12 @@ resource "google_cloud_scheduler_job" "minute_job" {
   description = "Checks graph state and performs updates."
 
   http_target {
-    uri         = google_cloudfunctions2_function.scheduled_func.service_config.uri
+    uri         = google_cloudfunctions2_function.scheduled_func.service_config[0].uri
     http_method = "POST"
     # Authentication for the private function
     oidc_token {
       service_account_email = google_service_account.scheduler_sa.email
-      audience              = google_cloudfunctions2_function.scheduled_func.service_config.uri
+      audience              = google_cloudfunctions2_function.scheduled_func.service_config[0].uri
     }
   }
 }
