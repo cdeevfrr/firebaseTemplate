@@ -37,10 +37,11 @@ resource "google_cloudfunctions2_function_iam_member" "scheduled_invoker" {
 
 # Create the Cloud Scheduler Job
 resource "google_cloud_scheduler_job" "minute_job" {
+  paused      = true
   project     = var.project_id
   name        = "minute-graph-check"
   region      = var.region
-  schedule    = "* * * * *" # Every minute
+  schedule    = "* * * * 30" # Every 30 minutes
   time_zone   = "America/New_York"
   description = "Checks graph state and performs updates."
 

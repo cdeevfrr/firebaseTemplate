@@ -31,3 +31,4 @@ To deploy in general, just that last one.
 
 ## Usage notes
 - It comes with a firestore document database, which is scoped to each user. cloud functions (the backend) can access any document in the database, and users (client side) can access any document following the path `/databases/{database}/documents/users/{userId}/{x=**}` (path matching definition [here](https://firebase.google.com/docs/rules/rules-language) )
+- It comes with a scheduled function that runs every minute. Starts out paused in the terraform file. 
