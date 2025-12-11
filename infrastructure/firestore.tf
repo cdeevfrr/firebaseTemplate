@@ -4,6 +4,9 @@ resource "google_firestore_database" "database" {
   name        = "default-database"
   location_id = var.firestore_region
   type        = "FIRESTORE_NATIVE" # Only other option is an out dated type.
+  # Somewhat risky deletion deletion_policy:
+  # If you're doing a real app, recommended to change this to ABANDON.
+  deletion_policy = "DELETE"
 }
 
 # Deploy the Firestore Security Rules

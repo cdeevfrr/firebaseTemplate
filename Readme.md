@@ -8,7 +8,13 @@ To use the template:
 
 ## To actually deploy
 
-Make sure you have terraform & gcloud installed, you can check with
+### Infrastructure 
+
+First, make yourself a google cloud project for this to live in. The terraform will create a firebase project inside it.
+
+You have to accept the firebase Terms Of Service at least once per google account to deploy this terraform (you can start making a firebase project and abort to accept the TOS).
+
+Now, make sure you have terraform & gcloud installed, you can check with
 
 - `terraform version`
 - `gcloud version`
