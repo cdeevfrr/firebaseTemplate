@@ -1,0 +1,17 @@
+{
+  "name": "firebase_template_backend",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "functions-framework --target=myTypescriptFunction",
+    "prestart": "npm run build",
+    "gcp-build": "npm run build"
+  },
+  "dependencies": {
+    "@google-cloud/functions-framework": "^4.0.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
