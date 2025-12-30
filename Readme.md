@@ -8,6 +8,11 @@ To use the template:
 
 ## To actually deploy
 
+There are 3 pieces: Infrasctucture, backend, and frontend.
+
+Infrastructure & backend are deployed together via terraform.
+Frontend is deployed via firebase.
+
 ### Infrastructure 
 
 First, make yourself a google cloud project for this to live in. The terraform will create a firebase project inside it.
@@ -33,6 +38,15 @@ To deploy the first time:
 - `terraform apply`
 
 To deploy in general, just that last one.
+
+## Frontend
+
+Make sure you have firebase CLI tools installed. You can check with 
+`firebase --version`
+
+Once per project, run `firebase use myProjectID`
+
+Then, `npm run build` and `npm run deploy` should work from within the frontend folder!
 
 
 ## Usage notes
