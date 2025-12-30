@@ -27,7 +27,7 @@ resource "google_firebaserules_ruleset" "firestore" {
 # Release the ruleset to the 'cloud.firestore' release name
 resource "google_firebaserules_release" "firestore_release" {
   project      = var.project_id
-  name         = "cloud.firestore"
+  name         = "cloud.firestore/${google_firestore_database.database.name}"
   ruleset_name = google_firebaserules_ruleset.firestore.name
   depends_on   = [google_firestore_database.database]
 }
