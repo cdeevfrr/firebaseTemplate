@@ -26,7 +26,7 @@ provider "google-beta" {
 }
 
 # ---
-# 2. FIREBASE
+# FIREBASE
 # ---
 
 # Explicitly provision the Firebase project layer on the existing GCP project.
@@ -43,13 +43,15 @@ resource "google_firebase_project" "default" {
 resource "google_project_service" "firebase_api" {
   project = var.project_id
   service = "firebase.googleapis.com"
-  disable_on_destroy = false
 }
 
 # Creates a Firebase Web App instance
 resource "google_firebase_web_app" "web_app" {
   provider     = google-beta 
   # This creates a web app to host the React code and get client config
-  display_name = "My Graph App Web App"
-  depends_on   = [google_project_service.firebase_api, google_firebase_project.default]
+  display_name = "REPLACE ME"
+  depends_on   = [
+    google_project_service.firebase_api, 
+    google_firebase_project.default
+  ]
 }

@@ -1,16 +1,20 @@
 
-# Enables the Cloud Functions API
+# Enables the Cloud Functions API (Required to run functions)
 resource "google_project_service" "cloudfunctions_api" {
   project = var.project_id
   service = "cloudfunctions.googleapis.com"
-  disable_on_destroy = false
 }
 
 # Enables the Cloud Run API (which Cloud Functions 2nd Gen relies on)
 resource "google_project_service" "cloudrun_api" {
   project = var.project_id
   service = "run.googleapis.com"
-  disable_on_destroy = false
+}
+
+# Enables the Cloud Build API (required for Cloud Functions/Cloud Run to create your function)
+resource "google_project_service" "cloudbuild_api" {
+  project            = var.project_id
+  service            = "cloudbuild.googleapis.com"
 }
 
 # Service Account for the function to run under
@@ -70,6 +74,7 @@ resource "google_cloudfunctions2_function" "backend_func" {
  
   depends_on = [
     google_project_service.cloudfunctions_api,
+    google_project_service.cloudbuild_api,
     google_project_service.cloudrun_api,
   ]
 }

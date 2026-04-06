@@ -2,8 +2,12 @@
 
 To use the template:
 
+- Make a GCP project
 - Copy the code to your repo (probably clone or fork.)
 - Fix the display name in the infrastructure/main.tf Firebase Web App instance
+- Update the project ID in the .tfvars file
+- Start making a firebase project, accept terms of service, and then abort making the project.
+- Follow the deploy steps below to get your starter app up and running!
 
 
 ## To actually deploy
@@ -28,8 +32,6 @@ Now, make sure you have terraform & gcloud installed, you can check with
 
 Give terraform permission to edit this project (opens a browser)
 - `gcloud auth application-default login`
-
-Update the `infrastructure/terraform.tfvars` file for your project ID.
 
 To deploy the first time:
 - `cd infrastructure`
