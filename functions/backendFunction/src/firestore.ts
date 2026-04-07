@@ -4,7 +4,9 @@ import * as admin from "firebase-admin";
 admin.initializeApp({});
 
 const db = admin.firestore();
-db.settings({ databaseId: 'default-database' }); // this db name is created in our terraform.
+db.settings({ 
+    databaseId: 'default-database', // this db name is created in our terraform.
+}); 
 
 const auth = admin.auth();
 
