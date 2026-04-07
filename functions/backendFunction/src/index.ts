@@ -7,7 +7,7 @@ export const handleUserRequest: ff.HttpFunction = async (req, res) => {
   // https://console.cloud.google.com/logs/query;query=resource.labels.service_name%3D%22backend%22
 
   const allowedOrigins = [
-    'https://cdeevfrrgames.web.app', // frontend
+    'https://YOURAPP.web.app', // frontend
     'http://localhost:3000', // Common React port
     'http://localhost:5173', // Common Vite port
     'http://localhost:8080'  // Common Firebase emulator port

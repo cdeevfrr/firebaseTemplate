@@ -5,12 +5,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your Firebase Configuration (Found in Firebase Console, not GCP console; Project Settings)
 const firebaseConfig = {
-  apiKey: "AIzaSyAvQPXVuDgygvLmWL4BvA_5JFTI7Di8SY4",
-  authDomain: "cdeevfrrgames.firebaseapp.com",
-  projectId: "cdeevfrrgames",
-  storageBucket: "cdeevfrrgames.firebasestorage.app",
-  messagingSenderId: "688273328565",
-  appId: "1:688273328565:web:b82d769c202f21a045f1fc"
+  apiKey: "FIND THIS WHOLE OBJECT IN THE FIREBASE CONSOLE (not GCP console)",
+  authDomain: "FIND THIS WHOLE OBJECT IN THE FIREBASE CONSOLE (not GCP console)",
+  projectId: "FIND THIS WHOLE OBJECT IN THE FIREBASE CONSOLE (not GCP console)",
+  storageBucket: "FIND THIS WHOLE OBJECT IN THE FIREBASE CONSOLE (not GCP console)",
+  messagingSenderId: "FIND THIS WHOLE OBJECT IN THE FIREBASE CONSOLE (not GCP console)",
+  appId: "FIND THIS WHOLE OBJECT IN THE FIREBASE CONSOLE (not GCP console)"
 };
 
 // Initialize Firebase Services

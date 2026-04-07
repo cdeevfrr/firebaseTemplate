@@ -1,6 +1,6 @@
 import { auth } from "./Firebase";
 
-const BACKEND_URL = "https://backend-t73ndrz42q-uc.a.run.app";
+const BACKEND_URL = "https://FIND_YOUR_BACKEND_URL.a.run.app";
 
 export async function hitBackend() {
     const user = auth.currentUser;
