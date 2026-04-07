@@ -1,10 +1,17 @@
 # Template
 
-To use the template:
+Follow all the instructions below to get started using this template! They have to be followed in order, particularly backend needs to exist to get the frontend up and working.
 
+
+## Initial steps
+
+- Make a GCP project
 - Copy the code to your repo (probably clone or fork.)
 - Fix the display name in the infrastructure/main.tf Firebase Web App instance
+- Update the project ID in the .tfvars file
+- (Once per google account) Start making a firebase project, accept terms of service, and then abort making the project.
 
+Now, we can deploy the backend.
 
 ## To actually deploy
 
@@ -29,8 +36,6 @@ Now, make sure you have terraform & gcloud installed, you can check with
 Give terraform permission to edit this project (opens a browser)
 - `gcloud auth application-default login`
 
-Update the `infrastructure/terraform.tfvars` file for your project ID.
-
 To deploy the first time:
 - `cd infrastructure`
 - `terraform init`
@@ -46,7 +51,17 @@ Make sure you have firebase CLI tools installed. You can check with
 
 Once per project, run `firebase use myProjectID`
 
-Then, `npm run build` and `npm run deploy` should work from within the frontend folder!
+Find the frontend's "Firebase.ts" file, and the config object there. Update it from the GCP console - you should be able to copy-paste the whole JSON object. 
+
+In the Firebase Console (not the google cloud console) find the deployed function's URL. It shoud have `.run.app` not `.net`. Tell the frontend how to hit it in `frontend/src/APIs/Backend.ts`.
+
+In the firebase console for your project, add Google as a new authentication provider. Lookup how to do this if you haven't done it before!
+
+Then, `npm run build` and `npm run deploy` should work from within the frontend folder! They'll tell you the URL to visit. 
+
+Go add that URL to the backend's cors allow list, functions/backendFunction/src/index.ts. Redeploy the backend.
+
+Now, you should be able click around the frontend UI and hit the database, and see the changes in the cloud console!
 
 
 ## Usage notes

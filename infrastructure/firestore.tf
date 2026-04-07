@@ -1,3 +1,9 @@
+# Enables the Cloud Firestore API
+resource "google_project_service" "firestore_api" {
+  project            = var.project_id
+  service            = "firestore.googleapis.com"
+}
+
 # Creates the Firestore Database (Native Mode)
 resource "google_firestore_database" "database" {
   project     = var.project_id
@@ -7,6 +13,11 @@ resource "google_firestore_database" "database" {
   # Somewhat risky deletion deletion_policy:
   # If you're doing a real app, recommended to change this to ABANDON.
   deletion_policy = "DELETE"
+
+  depends_on = [
+    google_project_service.firebase_api, 
+    google_project_service.firestore_api
+  ]
 }
 
 # Deploy the Firestore Security Rules
